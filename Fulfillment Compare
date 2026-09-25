@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy -Fulfillment Compare</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; }
+    h1 { border-bottom: 2px solid #eaeaea; padding-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy for Fulfillment Compare</h1>
+  <p><strong>Effective Date:</strong> September 2026</p>
+
+  <h2>Data Collection and Usage</h2>
+  <p>Fulfillment Compare does not collect, store, transmit, or share any personal user data or browsing activity.</p>
+  <p>All core functions and settings are processed entirely locally inside your browser session.</p>
+
+  <h2>Third Parties</h2>
+  <p>We do not integrate any third-party trackers, analytics libraries, or external advertising APIs.</p>
+
+  <h2>Contact</h2>
+  <p>If you have any questions, contact: <a href="mailto:your-email@example.com">yogesh.yadavyaman@gmail.com</a></p>
+</body>
+</html>
