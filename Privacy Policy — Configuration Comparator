@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Configuration Comparator</title>
+  <style>
+    body { margin: 0; background: #f4f7fb; color: #1c2b42; font: 16px/1.55 -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 760px; margin: 0 auto; padding: 40px 22px 64px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    h2 { margin: 32px 0 8px; font-size: 20px; }
+    h3 { margin: 20px 0 6px; font-size: 16px; }
+    p, li { margin: 0 0 10px; }
+    ul { padding-left: 20px; }
+    .meta { color: #5d6b82; font-size: 14px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Configuration Comparator Chrome extension<br>Effective date: 26 September 2026</p>
+
+  <p>This policy describes how the Configuration Comparator extension collects, handles, stores, and shares user data. The extension runs in the user’s browser. Its publisher does not operate a server that receives data from the extension.</p>
+
+  <h2>Data collection</h2>
+  <p>The extension collects data only so the user can compare Salesforce configuration between orgs they are already signed in to. Collection happens on the user’s device when they open the extension or run a comparison.</p>
+
+  <h3>Data read from the browser</h3>
+  <ul>
+    <li><strong>Active tab address.</strong> The extension reads the URL of the current tab to determine whether that tab is a Salesforce org and to identify the source org.</li>
+    <li><strong>Salesforce session cookies.</strong> The extension reads existing <code>sid</code> cookies for Salesforce hosts (<code>*.salesforce.com</code>, <code>*.force.com</code>, and <code>*.salesforce-setup.com</code>). From each cookie it uses the session value, the org id, and the host. It does not read cookies for other websites.</li>
+  </ul>
+
+  <h3>Data the user enters</h3>
+  <ul>
+    <li>The target org chosen from Salesforce sessions already present in Chrome.</li>
+    <li>A fulfillment step group global key.</li>
+    <li>A flow API name.</li>
+    <li>An object API name and, when requested, a field API name.</li>
+    <li>The users selected for a permission comparison.</li>
+  </ul>
+
+  <h3>Data retrieved from the user’s Salesforce org</h3>
+  <p>After the user asks for a comparison, the extension calls that org’s Salesforce API and receives the records needed for the screen they opened:</p>
+  <ul>
+    <li>Fulfillment plan records and the fields those objects have in that org, including the group global key and the name of a related record when a lookup has a name.</li>
+    <li>For User Permissions: active users’ name, username, email address, profile, role, and user license, plus assigned permission sets, permission set groups, permission set licenses, and package licenses. An object or field lookup also returns which active users have that access and which permission set or profile grants it.</li>
+    <li>For Flows: the active flow version and its canvas components for the API name the user entered.</li>
+    <li>For Metadata: the object’s field definitions, including type, length, formulas, picklist values, and lookup references.</li>
+  </ul>
+
+  <h3>Data this extension does not collect</h3>
+  <ul>
+    <li>Salesforce passwords, security tokens, or a separate account with the publisher.</li>
+    <li>Payment information, government identifiers, precise location, contacts, photos, or microphone and camera data.</li>
+    <li>Browsing history other than the active tab address used to detect Salesforce.</li>
+    <li>Advertising identifiers, analytics events, or crash reports sent to the publisher.</li>
+  </ul>
+
+  <h2>Data handling</h2>
+  <p>The extension uses the data above for one purpose: to show the user a comparison of Salesforce configuration.</p>
+  <ul>
+    <li>The active tab address selects the source org. The session cookie list selects the target org.</li>
+    <li>The session value is placed in the <code>Authorization</code> header of read-only HTTPS requests to the Salesforce org that issued that session. The requests are limited to the comparison the user started.</li>
+    <li>Returned records are compared in the browser and shown on the extension page. User names, usernames, and email addresses are shown only on the User Permissions screen so the user can tell which person has which access.</li>
+    <li>The fulfillment group global key the user last typed is saved so the same key can be filled in the next time.</li>
+    <li>The publisher does not use this data to advertise, to build a profile, to make a credit or eligibility decision, or to identify the user for the publisher’s own purposes.</li>
+  </ul>
+
+  <h2>Data storage</h2>
+  <ul>
+    <li><strong>On the device, in Chrome extension storage.</strong> One value is saved: the last fulfillment group global key the user entered (<code>lastGlobalKey</code>). It stays in <code>chrome.storage.local</code> for this browser profile until the user enters a different key, clears the extension’s storage, or removes the extension. It is not synced to a Google account by this extension.</li>
+    <li><strong>In memory for the open page.</strong> The session value, org hosts, fulfillment records, user and permission details, flow metadata, and field definitions are held in the popup or workspace tab while that page is open. Closing the popup or the workspace tab discards them. The extension does not write the session value into extension storage, into a file, or into the page address.</li>
+    <li><strong>In the browser console on the user’s machine.</strong> If a Salesforce call fails, or if the session cookie is found on a different Salesforce host than the API host, the extension may write the error text and that host name to the local developer console. It does not write the session value there, and it does not send that console output to the publisher.</li>
+    <li><strong>On a publisher server.</strong> The extension does not store user data on a server operated by the publisher, because it does not send user data to the publisher.</li>
+    <li><strong>In Salesforce.</strong> Records the extension reads remain in the user’s Salesforce org under Salesforce’s own retention rules. The extension does not create, update, or delete Salesforce records.</li>
+  </ul>
+  <p>To delete the saved global key, remove the extension from Chrome or clear its extension storage in Chrome settings. To delete data held in memory, close the extension popup and any Configuration Comparator workspace tab.</p>
+
+  <h2>Data sharing</h2>
+  <p>The publisher does not receive, sell, rent, or trade user data. The extension does not send data to advertising networks, analytics services, or other third parties.</p>
+  <p>The only place the extension transmits data is the Salesforce org the user is already signed in to. That transmission is an HTTPS API request, authorized with the session cookie Chrome already stored for that org, and it contains the comparison query the user requested. Salesforce’s handling of data inside that org is covered by the user’s agreement with Salesforce, not by this extension.</p>
+  <p>Messages between the extension popup and its background worker stay inside the browser. Those messages carry the session value only so the worker can pass the existing cookie to the page that makes the API call. They are not delivered to the publisher.</p>
+  <p>The publisher has no copy of the session, the user list, or the org records, and therefore has nothing of that kind to disclose to a government authority or another party. Chrome and Salesforce may process data under their own policies when the user uses their services.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy can be sent to the developer contact published on the Chrome Web Store listing for Configuration Comparator.</p>
+</main>
+</body>
+</html>
